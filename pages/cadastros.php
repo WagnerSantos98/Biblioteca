@@ -1,3 +1,8 @@
+<!--Conexão Banco de Dados-->
+<?php
+include_once('../db/conexao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,14 +12,14 @@
     
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assests/css/style.css">
 
     <!--Icons Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="/assets/js/app.js"></script>
+    <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title>
 </head>
@@ -27,13 +32,13 @@
         <nav>
           <ul class="navigation">
             <li>
-                <a href="/index.html">Home</a>   
+                <a href="../index.php">Home</a>   
             </li>
             <li>
-                <a href="/pages/emp_dev.html">Empréstimos e Devoluções</a>
+                <a href="../pages/emp_dev.php">Empréstimos e Devoluções</a>
             </li>
             <li>
-                <a href="/pages/cadastros.html">Cadastros</a>
+                <a href="../pages/cadastros.php">Cadastros</a>
             </li>
             <li>
                 <a href="">Configurações</a>
@@ -57,47 +62,47 @@
 
                 <!--Formulário de Cadastro/Alunos-->
                 <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" method="POST" action="../db/cadastro_aluno.php">
                       <div class="row">
                         <div class="input-field col s4">
-                          <input id="nome" type="text" class="validate">
+                          <input name="nome" id="nome" type="text" class="validate">
                           <label for="nome">Nome</label>
                         </div>
                         <div class="input-field col s3">
-                          <input id="ra" type="text" class="validate">
+                          <input name="ra" id="ra" type="text" class="validate">
                           <label for="ra">RA</label>
                         </div>
                         <div class="input-field col s4">
-                            <input id="email" type="text" class="validate">
+                            <input name="email" id="email" type="email" class="validate">
                             <label for="email">Email</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s6">
-                            <input id="curso" type="text" class="validate">
+                            <input name="curso" id="curso" type="text" class="validate">
                             <label for="curso">Curso</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="semestre" type="text" class="validate">
+                            <input name="semestre" id="semestre" type="text" class="validate">
                             <label for="semestre">Semestre</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="data_nascimento" type="text" class="validate">
+                          <input name="data_nascimento" id="data_nascimento" type="date" class="validate">
                           <label for="data_nascimento">Data de Nascimento</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s6">
-                          <input id="password" type="password" class="validate">
-                          <label for="password">Endereço</label>
+                          <input name="endereco" id="endereco" type="text" class="validate">
+                          <label for="endereco">Endereço</label>
                         </div>
                         <div class="input-field col s2">
-                            <input id="numero" type="text" class="validate">
+                            <input name="numero" id="numero" type="text" class="validate">
                             <label for="numero">Número</label>
                           </div>
-                          <a class="waves-effect waves-light btn"><i class="fa fa-send"></i> Cadastrar</a>
+                          <button class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                       </div>
                     </form>
                   </div>
@@ -110,46 +115,46 @@
                     <form class="col s12">
                       <div class="row">
                         <div class="input-field col s4">
-                          <input id="nome" type="text" class="validate">
-                          <label for="nome">Código do Livro</label>
+                          <input id="cod_livro" type="text" class="validate">
+                          <label for="cod_livro">Código do Livro</label>
                         </div>
                         <div class="input-field col s4">
                           <input id="ra" type="text" class="validate">
                           <label for="ra">Título do Livro</label>
                         </div>
                         <div class="input-field col s3">
-                            <input id="email" type="text" class="validate">
-                            <label for="email">NUM.ISBN</label>
+                            <input id="num_ibsn" type="text" class="validate">
+                            <label for="num_ibsn">NUM.ISBN</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s4">
-                            <input id="curso" type="text" class="validate">
-                            <label for="curso">Ano</label>
+                            <input id="ano_livro" type="text" class="validate">
+                            <label for="ano_livro">Ano</label>
                         </div>
                         <div class="input-field col s4">
-                            <input id="semestre" type="text" class="validate">
-                            <label for="semestre">Autor</label>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s4">
-                          <input id="data_nascimento" type="text" class="validate">
-                          <label for="data_nascimento">Editora</label>
+                            <input id="autor" type="text" class="validate">
+                            <label for="autor">Autor</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s4">
-                          <input id="password" type="password" class="validate">
-                          <label for="password">Edição</label>
+                          <input id="editora" type="text" class="validate">
+                          <label for="editora">Editora</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s4">
+                          <input id="edicao" type="text" class="validate">
+                          <label for="edicao">Edição</label>
                         </div>
                         <div class="input-field col s2">
-                            <input id="numero" type="text" class="validate">
-                            <label for="numero">Classificação</label>
+                            <input id="classificacao" type="text" class="validate">
+                            <label for="classificacao">Classificação</label>
                         </div>
                         <div class="input-field col s2">
-                            <input id="numero" type="text" class="validate">
-                            <label for="numero">Quantidade</label>
+                            <input id="qtde" type="text" class="validate">
+                            <label for="qtde">Quantidade</label>
                         </div>
                         <a class="waves-effect waves-light btn"><i class="fa fa-send"></i> Cadastrar</a>
                       </div>

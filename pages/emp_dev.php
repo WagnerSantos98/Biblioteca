@@ -7,14 +7,14 @@
     
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assests/css/style.css">
 
     <!--Icons Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="/assets/js/app.js"></script>
+    <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title>
 </head>
@@ -27,13 +27,13 @@
         <nav>
           <ul class="navigation">
             <li>
-                <a href="/index.html">Home</a>   
+                <a href="../index.php">Home</a>   
             </li>
             <li>
-                <a href="/pages/emp_dev.html">Empréstimo e Devoluções</a>
+                <a href="../pages/emp_dev.php">Empréstimo e Devoluções</a>
             </li>
             <li>
-                <a href="/pages/cadastros.html">Cadastros</a>
+                <a href="../pages/cadastros.php">Cadastros</a>
             </li>
             <li>
                 <a href="">Configurações</a>
@@ -48,8 +48,8 @@
       <div class="row">
         <div class="col s12">
           <ul class="tabs">
-            <li class="tab col s3"><a href="#emprestimo">Empréstimo de Livros</a></li>
-            <li class="tab col s3"><a class="active" href="#devolucao">Devolução de Livros</a></li>
+            <li class="tab col s3"><a class="active" href="#emprestimo">Empréstimo de Livros</a></li>
+            <li class="tab col s3"><a href="#devolucao">Devolução de Livros</a></li>
           </ul>
         </div>
         <div id="emprestimo" class="col s12">
