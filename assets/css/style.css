@@ -1,0 +1,61 @@
+html {
+    font-family: 'Open sans', sans-serif;
+  }
+  
+  .container-principal {
+    background-color: #e6ecff;
+  }
+  
+  /* side-bar */
+  .sideBar-lateral {
+    background-color: #99b3ff;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    transition: width 100ms ease-in; 
+  }
+  
+  .sideBar-lateral.small {
+    width: 80px;
+    overflow-x: hidden;
+  }
+  
+  .sideBar-lateral.small .item-descricao {
+    opacity: 0;
+  }
+  
+  .sideBar-lateral.small #btn img {
+    transform: rotate(180deg);
+  }
+  
+  .menu-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1em 1.5em;
+  }
+  
+  .menu-item:hover {
+    background-color: #668cff;
+  }
+  
+  /* definindo o tamanho dos ícones */
+  .item-icon {
+    width: 2em;
+    height: 2em;  
+    margin-right: 1.5em;
+  }
+  
+  .item-active {
+    /* alinhando ícones com textos */
+    display: flex;
+    align-items: center;
+  
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+  }
+  
+  /* label de descrição */
+  .item-descricao {
+    cursor: pointer;
+    white-space: nowrap;
+  }
