@@ -27,10 +27,10 @@
         <nav>
           <ul class="navigation">
             <li>
-                <a href="index.html">Home</a>   
+                <a href="/index.html">Home</a>   
             </li>
             <li>
-                <a href="/pages/emp_dev.html">Empréstimo de Livrostimos e Devoluções</a>
+                <a href="/pages/emp_dev.html">Empréstimo e Devoluções</a>
             </li>
             <li>
                 <a href="/pages/cadastros.html">Cadastros</a>
@@ -48,14 +48,131 @@
       <div class="row">
         <div class="col s12">
           <ul class="tabs">
-            <li class="tab col s3"><a class="active" href="#emprestimo">Emprés</a></li>
-            <li class="tab col s3"><a href="#devolucao">Devolução de Livros</a></li>
+            <li class="tab col s3"><a href="#emprestimo">Empréstimo de Livros</a></li>
+            <li class="tab col s3"><a class="active" href="#devolucao">Devolução de Livros</a></li>
           </ul>
         </div>
         <div id="emprestimo" class="col s12">
-            
+
+            <!--Formulário de Cadastro/Alunos-->
+            <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <input id="ra" type="text" class="validate">
+                      <label for="ra">RA</label>
+                    </div>
+                    <a class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;"><i class="fa fa-search"></i> Pesquisar</a>
+                  </div>
+            <!--Form. Oculta-->      
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="nome" type="text" class="validate">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="curso" type="text" class="validate">
+                    <label for="curso">Curso</label>
+                    </div>
+                <div class="input-field col s6">
+                    <input id="semestre" type="text" class="validate">
+                    <label for="semestre">Semestre</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="data_retirada" type="text" class="validate">
+                    <label for="data_retirada">Data de Retirada</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="data_entrega" type="text" class="validate">
+                    <label for="data_entrega">Data de Entrega</label>
+                </div>
+            </div>                 
+                </form>
+              </div>
+
         </div>
-        <div id="devolucao" class="col s12">Devolução de Livros</div>
+        <div id="devolucao" class="col s12">
+
+            <!--Formulário de Cadastro/Alunos-->
+            <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <input id="ra" type="text" class="validate">
+                      <label for="ra">RA</label>
+                    </div>
+                    <a class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;"><i class="fa fa-search"></i> Pesquisar</a>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s4">
+                        <label for="nome">Nome</label>
+                        <br><br>
+                        <p>Teste</p>
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="curso">Curso</label>
+                        <br><br>
+                        <p>Teste</p>
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="semestre">Semestre</label>
+                        <br><br>
+                        <p>Teste</p>
+                    </div>
+                    
+                </div>       
+            <!--Form. Oculta-->                  
+            <div class="row">
+                <div class="input-field col s4">
+                    <label for="nome">Título</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="isbn">ISBN</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="ano_livro">Ano do Livro</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="editora">Editora</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="edicao">Edição</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="classificacao">Classificação</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="data_emprestimo">Data do empréstimo</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="data_devolucao">Data de Devolução</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="status_livro">Status do Livro</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+            </div> 
+                </form>
+              </div>
+
+        </div>
       </div>
     </div>
 </body>
