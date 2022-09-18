@@ -13,8 +13,7 @@ function myFunct(){
     position: 'center',
     icon: 'success',
     title: 'Aluno cadastrado com sucesso!',
-    showConfirmButton: false,
-    timer: 3000
+    showConfirmButton: true
   })
 }
 

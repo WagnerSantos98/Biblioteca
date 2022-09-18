@@ -231,6 +231,6 @@ else if(isset($_POST['cadastrar_livro'])){
         </div>
     </div>
 
-   
+       
 </body>
 </html>
