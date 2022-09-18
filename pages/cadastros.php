@@ -1,6 +1,38 @@
 <!--Conexão Banco de Dados-->
 <?php
 include_once('../db/conexao.php');
+
+if(isset($_POST['cadastrar_aluno'])){
+
+$nome = $_POST['nome'];
+$ra = $_POST['ra'];
+$email = $_POST['email'];
+$curso = $_POST['curso'];
+$semestre = $_POST['semestre'];
+$data_nascimento = $_POST['data_nascimento'];
+$endereco = $_POST['endereco'];
+$numero = $_POST['numero'];
+
+$sql = "INSERT INTO tb_cadastro_aluno(nome, ra, email, curso, semestre, data_nascimento, endereco, numero)
+        VALUES ('$nome', '$ra', '$email', '$curso', '$semestre', '$data_nascimento', '$endereco', '$numero');";
+$sql = mysqli_query($con, $sql);
+
+}else if(isset($_POST['cadastrar_livro'])){
+  $cod_livro = $_POST['cod_livro'];
+  $titulo = $_POST['titulo'];
+  $num_ibsn = $_POST['num_ibsn'];
+  $ano_livro = $_POST['ano_livro'];
+  $autor = $_POST['autor'];
+  $editora = $_POST['editora'];
+  $endereco = $_POST['endereco'];
+  $edicao = $_POST['edicao'];
+  $classificacao = $_POST['classificacao'];
+  $qtde = $_POST ['qtde'];
+
+  $sql = "INSERT INTO tb_cadastro_aluno(cod_livro, titulo, num_ibsn, ano_livro, autor, editora, endereco, edicao, classificacao, qtde)
+        VALUES ('$cod_livro', '$titulo', '$num_ibsn', '$ano_livro', '$autor', '$editora', '$endereco', '$edicao', '$classificacao', '$qtde');";
+  $sql = mysqli_query($con, $sql);
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +94,7 @@ include_once('../db/conexao.php');
 
                 <!--Formulário de Cadastro/Alunos-->
                 <div class="row">
-                    <form class="col s12" method="POST" action="../db/cadastro_aluno.php">
+                    <form class="col s12" method="POST" action="">
                       <div class="row">
                         <div class="input-field col s4">
                           <input name="nome" id="nome" type="text" class="validate">
@@ -102,7 +134,7 @@ include_once('../db/conexao.php');
                             <input name="numero" id="numero" type="text" class="validate">
                             <label for="numero">Número</label>
                           </div>
-                          <button class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+                          <button name="cadastrar_aluno" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                       </div>
                     </form>
                   </div>
@@ -115,48 +147,48 @@ include_once('../db/conexao.php');
                     <form class="col s12">
                       <div class="row">
                         <div class="input-field col s4">
-                          <input id="cod_livro" type="text" class="validate">
+                          <input name="cod_livro" id="cod_livro" type="text" class="validate">
                           <label for="cod_livro">Código do Livro</label>
                         </div>
                         <div class="input-field col s4">
-                          <input id="ra" type="text" class="validate">
-                          <label for="ra">Título do Livro</label>
+                          <input name="titulo" id="titulo" type="text" class="validate">
+                          <label for="titulo">Título do Livro</label>
                         </div>
                         <div class="input-field col s3">
-                            <input id="num_ibsn" type="text" class="validate">
+                            <input name="num_ibsn" id="num_ibsn" type="text" class="validate">
                             <label for="num_ibsn">NUM.ISBN</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s4">
-                            <input id="ano_livro" type="text" class="validate">
+                            <input name="ano_livro" id="ano_livro" type="text" class="validate">
                             <label for="ano_livro">Ano</label>
                         </div>
                         <div class="input-field col s4">
-                            <input id="autor" type="text" class="validate">
+                            <input name="autor" id="autor" type="text" class="validate">
                             <label for="autor">Autor</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s4">
-                          <input id="editora" type="text" class="validate">
+                          <input name="editora" id="editora" type="text" class="validate">
                           <label for="editora">Editora</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s4">
-                          <input id="edicao" type="text" class="validate">
+                          <input name="edicao" id="edicao" type="text" class="validate">
                           <label for="edicao">Edição</label>
                         </div>
                         <div class="input-field col s2">
-                            <input id="classificacao" type="text" class="validate">
+                            <input name="classificacao" id="classificacao" type="text" class="validate">
                             <label for="classificacao">Classificação</label>
                         </div>
                         <div class="input-field col s2">
-                            <input id="qtde" type="text" class="validate">
+                            <input name="qtde" id="qtde" type="text" class="validate">
                             <label for="qtde">Quantidade</label>
                         </div>
-                        <a class="waves-effect waves-light btn"><i class="fa fa-send"></i> Cadastrar</a>
+                        <button name="cadastrar_livro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                       </div>
                     </form>
                   </div>
@@ -177,7 +209,7 @@ include_once('../db/conexao.php');
                           <label for="ra">Tipo de acesso</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="email" type="text" class="validate">
+                            <input id="email" type="email" class="validate">
                             <label for="email">Email</label>
                         </div>
                       </div>
