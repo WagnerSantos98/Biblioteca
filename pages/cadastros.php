@@ -43,13 +43,12 @@ error_reporting(0);
     header("Location: /pages/login.php");
 }*/
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['cadastrar_usuario'])) {
 	$username = $_POST['username'];
 	$tipo_acesso = $_POST['tipo_acesso'];
   $email_user = $_POST['email_user'];
 	$senha = md5($_POST['senha']);
 
-	if ($senha == $senha) {
 		$sql = "SELECT * FROM tb_usuarios WHERE email_user='$email_user'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
@@ -67,10 +66,6 @@ if (isset($_POST['submit'])) {
 		} else {
 			echo "<script>alert('Woops! E-mail já existe.')</script>";
 		}
-		
-	} else {
-		echo "<script>alert('Senha não coincidem.')</script>";
-	}
 }
 
 ?>
@@ -258,12 +253,12 @@ if (isset($_POST['submit'])) {
                       </div>
                       <div class="row">
                         <div class="input-field col s6">
-                            <input name="senha" id="senha" type="text" class="validate">
+                            <input name="senha" id="senha" type="password" class="validate">
                             <label for="senha">Senha</label>
                         </div>
                       </div>
                       
-                      <a name="cadastrar_usuario" class="waves-effect waves-light btn"><i class="fa fa-send"></i> Cadastrar</a>
+                      <button name="cadastrar_usuario" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                     </form>
                   </div>
 

@@ -7,19 +7,19 @@ session_start();
 error_reporting(0);
 
 if (isset($_SESSION['username'])) {
-    header("Location: colaborador.php");
+    header("Location: index.php");
 }
 
 if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
+	$email_user = $_POST['email_user'];
 	$senha = md5($_POST['senha']);
 
-	$sql = "SELECT * FROM users WHERE email='$email' AND senha='$senha'";
+	$sql = "SELECT * FROM tb_usuarios WHERE email_user='$email_user' AND senha='$senha'";
 	$result = mysqli_query($con, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['username'] = $row['username'];
-		header("Location: colaborador.php");
+		header("Location: index.php");
 	} else {
 		echo "<script>alert('Ooops! E-mail ou senha incorretos. ')</script>";
 	}
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="/assests/css/login.css">
+	<link rel="stylesheet" type="text/css" href="assests/css/login.css">
     
 
 	<title>Login - Biblioteca</title>
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 		<form action="" method="POST" class="login-email">
 			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
 			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+				<input type="email_user" placeholder="Email" name="email" value="<?php echo $email_user; ?>" required>
 			</div>
 			<div class="input-group">
 				<input type="password" placeholder="Senha" name="senha" value="<?php echo $_POST['senha']; ?>" required>
