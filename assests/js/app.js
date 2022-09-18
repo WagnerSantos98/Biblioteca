@@ -7,3 +7,15 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 })
 
+//Confirmação de Cadastro
+function myFunct(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Aluno cadastrado com sucesso!',
+    showConfirmButton: false,
+    timer: 3000
+  })
+}
+
+

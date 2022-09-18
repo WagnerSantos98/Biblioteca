@@ -2,6 +2,7 @@
 <?php
 include_once('../db/conexao.php');
 
+//Cadastro de aluno
 if(isset($_POST['cadastrar_aluno'])){
 
 $nome = $_POST['nome'];
@@ -16,8 +17,9 @@ $numero = $_POST['numero'];
 $sql = "INSERT INTO tb_cadastro_aluno(nome, ra, email, curso, semestre, data_nascimento, endereco, numero)
         VALUES ('$nome', '$ra', '$email', '$curso', '$semestre', '$data_nascimento', '$endereco', '$numero');";
 $sql = mysqli_query($con, $sql);
-
-}else if(isset($_POST['cadastrar_livro'])){
+}
+//Cadastro de livros
+else if(isset($_POST['cadastrar_livro'])){
   $cod_livro = $_POST['cod_livro'];
   $titulo = $_POST['titulo'];
   $num_ibsn = $_POST['num_ibsn'];
@@ -44,12 +46,14 @@ $sql = mysqli_query($con, $sql);
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../assests/css/style.css">
+    <link rel="stylesheet" href="../assests/css/confimation.css">
 
     <!--Icons Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title>
@@ -133,7 +137,7 @@ $sql = mysqli_query($con, $sql);
                             <input name="numero" id="numero" type="text" class="validate">
                             <label for="numero">Número</label>
                           </div>
-                          <button name="cadastrar_aluno" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+                          <button name="cadastrar_aluno" onclick="myFunct();"  class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                       </div>
                     </form>
                   </div>
@@ -226,6 +230,7 @@ $sql = mysqli_query($con, $sql);
             </div>
         </div>
     </div>
-    
+
+   
 </body>
 </html>
