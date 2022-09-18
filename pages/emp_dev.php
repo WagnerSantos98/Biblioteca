@@ -1,3 +1,29 @@
+<?php
+include_once('../db/conexao.php');
+
+$ra = filter_input(INPUT_GET, 'ra', FILTER_SANITIZE_NUMBER_INT);
+if(!empty($ra)){
+
+    $limit = 1;
+    $result_aluno = "SELECT * FROM tb_cadastro_aluno WHERE ra =:ra LIMIT :limit";
+
+    $resultado_aluno = $con->prepare($result_aluno);
+    $resultado_aluno->bind_param('ra', $ra, PDO::PARAM_INT);
+    $resultado_aluno->bind_param('limit', $limit, PDO::PARAM_INT);
+    $resultado_aluno->execute();
+
+    $array_valores = array();
+
+    if($resultado_aluno->num_rows() !=0){
+
+    }else{
+        $array_valores['nome'] = 'Aluno não encontrado';
+    }
+    echo json_encode($array_valores);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,6 +40,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.5/jquery.min.js" type="text/javascript"></script>
     <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title>
@@ -56,30 +83,31 @@
 
             <!--Formulário de Cadastro/Alunos-->
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" method="POST" action="">
                   <div class="row">
                     <div class="input-field col s4">
-                      <input id="ra" type="text" class="validate">
+                    <span id="msgAlerta1"></span>
+                      <input id="ra" type="text" class="validate" >
                       <label for="ra">RA</label>
                     </div>
-                    <a class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;"><i class="fa fa-search"></i> Pesquisar</a>
+                    <button class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;" type="submit"><i class="fa fa-search"></i> Pesquisar</button>
                   </div>
             <!--Form. Oculta-->      
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="nome" type="text" class="validate">
+                    <input id="nome" type="text" class="validate" disabled>
                     <label for="nome">Nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="curso" type="text" class="validate">
+                    <input id="curso" type="text" class="validate" disabled> 
                     <label for="curso">Curso</label>
                     </div>
                 <div class="input-field col s6">
-                    <input id="semestre" type="text" class="validate">
+                    <input id="semestre" type="text" class="validate" disabled> 
                     <label for="semestre">Semestre</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="data_retirada" type="text" class="validate">
+                    <input id="data_retirada" type="date" class="validate">
                     <label for="data_retirada">Data de Retirada</label>
                 </div>
                 <div class="input-field col s6">

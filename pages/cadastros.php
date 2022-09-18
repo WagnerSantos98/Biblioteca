@@ -58,6 +58,7 @@ if (isset($_POST['cadastrar_usuario'])) {
 			if ($result) {
 				echo "<script>alert('Wow! Registro do usuário concluído.')</script>";
 				$username = "";
+        $tipo_acesso = "";
 				$email_user = "";
 				$_POST['senha'] = "";
 			} else {

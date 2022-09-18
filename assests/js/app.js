@@ -17,4 +17,18 @@ function myFunct(){
   })
 }
 
+$(document).ready(function(){
+  $("input[name='ra']").blur(function(){
+    var $nome = $("input[name='nome']");
+    var $curso = $("input[name='curso']");
+    var $semestre = $("input[name='semestre']");
+    var ra = $(this).val();
+
+    $.getJSON('/pages/emp_dev.php', (ra), function(retorno){
+      $nome.val(retorno.nome);
+      $curso.val(retorno.curso);
+      $semestre.val(retorno.semestre);
+    });
+  });
+});
 
