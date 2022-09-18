@@ -1,8 +1,24 @@
 <?php
 include_once('../db/conexao.php');
 
+$ra = filter_input(INPUT_GET, 'ra', FILTER_SANITIZE_NUMBER_INT);
 
+if(!empty($ra)){
+    //Query  recuperação de dados
+   $query_aluno = "SELECT nome, curso, semestre FROM tb_cadastro_aluno WHERE ra =:ra LIMIT 1";
+   $result_aluno = $con->prepare($query_aluno);
 
+   $result_aluno->bind_param(':ra', $ra);
+
+   $result_aluno->execute();
+
+   if($result_aluno->num_rows() != 0){
+    
+    $return = ['erro' => false, 'dados'];
+   }
+
+}
+//echo json_encode($return);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +37,7 @@ include_once('../db/conexao.php');
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../assests/js/app.js"></script>
+    
             
     <title>Painel de Biblioteca</title>
 </head>
@@ -67,7 +83,7 @@ include_once('../db/conexao.php');
                   <div class="row">
                     <div class="input-field col s4">
                     <span id="msgAlerta1"></span>
-                      <input id="ra" type="text" class="validate" >
+                      <input name="ra" id="ra" type="text" class="validate" onkeyup="pesquisarAluno(1)">
                       <label for="ra">RA</label>
                     </div>
                     <button onclick="myTeste()" class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;" type="submit"><i class="fa fa-search"></i> Pesquisar</button>
@@ -75,16 +91,16 @@ include_once('../db/conexao.php');
             <!--Form. Oculta-->      
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="nome" type="text" class="validate" disabled>
-                    <label for="nome">Nome</label>
+                    <input id="nome1" type="text" class="validate" >
+                    <label for="nome1">Nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="curso" type="text" class="validate" disabled> 
-                    <label for="curso">Curso</label>
+                    <input id="curso1" type="text" class="validate" disabled> 
+                    <label for="curso1">Curso</label>
                     </div>
                 <div class="input-field col s6">
-                    <input id="semestre" type="text" class="validate" disabled> 
-                    <label for="semestre">Semestre</label>
+                    <input id="semestre1" type="text" class="validate" disabled> 
+                    <label for="semestre1">Semestre</label>
                 </div>
                 <div class="input-field col s6">
                     <input id="data_retirada" type="date" class="validate">
@@ -188,5 +204,7 @@ include_once('../db/conexao.php');
         </div>
       </div>
     </div>
+
+    <script src="../assests/js/app.js"></script>
 </body>
 </html>
