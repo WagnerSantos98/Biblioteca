@@ -1,26 +1,6 @@
 <?php
 include_once('../db/conexao.php');
 
-$ra = filter_input(INPUT_GET, 'ra', FILTER_SANITIZE_NUMBER_INT);
-if(!empty($ra)){
-
-    $limit = 1;
-    $result_aluno = "SELECT * FROM tb_cadastro_aluno WHERE ra =:ra LIMIT :limit";
-
-    $resultado_aluno = $con->prepare($result_aluno);
-    $resultado_aluno->bind_param('ra', $ra, PDO::PARAM_INT);
-    $resultado_aluno->bind_param('limit', $limit, PDO::PARAM_INT);
-    $resultado_aluno->execute();
-
-    $array_valores = array();
-
-    if($resultado_aluno->num_rows() !=0){
-
-    }else{
-        $array_valores['nome'] = 'Aluno não encontrado';
-    }
-    echo json_encode($array_valores);
-}
 
 
 ?>
@@ -40,7 +20,7 @@ if(!empty($ra)){
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.5/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title>
@@ -90,7 +70,7 @@ if(!empty($ra)){
                       <input id="ra" type="text" class="validate" >
                       <label for="ra">RA</label>
                     </div>
-                    <button class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;" type="submit"><i class="fa fa-search"></i> Pesquisar</button>
+                    <button onclick="myTeste()" class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;" type="submit"><i class="fa fa-search"></i> Pesquisar</button>
                   </div>
             <!--Form. Oculta-->      
             <div class="row">
