@@ -1,23 +1,29 @@
 <?php
 include_once('../db/conexao.php');
 
-$ra = filter_input(INPUT_GET, 'ra', FILTER_SANITIZE_NUMBER_INT);
+error_reporting(0);
 
-if(!empty($ra)){
+if(isset($_POST['pesquisar_aluno'])){
+    $ra = $_POST['ra'];
+
     //Query  recuperação de dados
-   $query_aluno = "SELECT nome, curso, semestre FROM tb_cadastro_aluno WHERE ra =:ra LIMIT 1";
-   $result_aluno = $con->prepare($query_aluno);
-
-   $result_aluno->bind_param(':ra', $ra);
-
-   $result_aluno->execute();
-
-   if($result_aluno->num_rows() != 0){
-    
-    $return = ['erro' => false, 'dados'];
-   }
-
+   $result_aluno = "SELECT * FROM tb_cadastro_aluno WHERE ra ='$ra' ";
+   $resultado_aluno = mysqli_query($con, $result_aluno);
+   $row_aluno = mysqli_fetch_assoc($resultado_aluno);
 }
+
+if(isset($_POST['pesquisar_livro'])){
+    $cod_livro = $_POST['cod_livro'];
+
+    //Query  recuperação de dados
+   $result_livro = "SELECT * FROM tb_cadastro_livro WHERE cod_livro ='$cod_livro' ";
+   $resultado_livro = mysqli_query($con, $result_livro);
+   $row_livro = mysqli_fetch_assoc($resultado_livro);
+}
+
+
+
+
 //echo json_encode($return);
 ?>
 <!DOCTYPE html>
@@ -37,7 +43,7 @@ if(!empty($ra)){
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
             
     <title>Painel de Biblioteca</title>
 </head>
@@ -83,34 +89,41 @@ if(!empty($ra)){
                   <div class="row">
                     <div class="input-field col s4">
                     <span id="msgAlerta1"></span>
-                      <input name="ra" id="ra" type="text" class="validate" onkeyup="pesquisarAluno(1)">
+                      <input name="ra" id="ra" type="text" class="validate">
                       <label for="ra">RA</label>
                     </div>
-                    <button onclick="myTeste()" class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;" type="submit"><i class="fa fa-search"></i> Pesquisar</button>
+                    <button name="pesquisar_aluno" class="waves-effect waves-light btn" style="margin-top: 20px; position: fixed;" type="submit"><i class="fa fa-search"></i> Pesquisar</button>
                   </div>
             <!--Form. Oculta-->      
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="nome1" type="text" class="validate" >
-                    <label for="nome1">Nome</label>
+                    <input id="nome" type="text" class="validate" value="<?php echo $row_aluno['nome'];?>" disabled>
+                    <label for="nome">Nome</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="curso1" type="text" class="validate" disabled> 
-                    <label for="curso1">Curso</label>
+                    <input id="curso" type="text" class="validate" value="<?php echo $row_aluno['curso'];?>" disabled> 
+                    <label for="curso">Curso</label>
                     </div>
                 <div class="input-field col s6">
-                    <input id="semestre1" type="text" class="validate" disabled> 
-                    <label for="semestre1">Semestre</label>
+                    <input id="semestre" type="text" class="validate" value="<?php echo $row_aluno['semestre'];?>" disabled> 
+                    <label for="semestre">Semestre</label>
                 </div>
-                <div class="input-field col s6">
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <input name="cod_livro" id="cod_livro" type="text" class="validate"> 
+                    <label for="cod_livro">Título ou Código do Livro</label>
+                </div>
+                <div class="input-field col s2">
                     <input id="data_retirada" type="date" class="validate">
                     <label for="data_retirada">Data de Retirada</label>
                 </div>
-                <div class="input-field col s6">
-                    <input id="data_entrega" type="text" class="validate">
+                <div class="input-field col s2">
+                    <input id="data_entrega" type="text" class="validate" onkeypress="$(this).mask('00/00/0000')" >
                     <label for="data_entrega">Data de Entrega</label>
                 </div>
-            </div>                 
+                <button name="pesquisar_livro" class="waves-effect waves-light btn modal-trigger" type="submit" href="#modal1">Modal</button>
+            </div>             
                 </form>
               </div>
 
@@ -148,7 +161,7 @@ if(!empty($ra)){
             <!--Form. Oculta-->                  
             <div class="row">
                 <div class="input-field col s4">
-                    <label for="nome"><i class="fas fa-book-open"></i> Título</label>
+                    <label for="titulo"><i class="fas fa-book-open"></i> Título</label>
                     <br><br>
                     <p>Teste</p>
                 </div>
@@ -204,6 +217,64 @@ if(!empty($ra)){
         </div>
       </div>
     </div>
+
+    <!-- Modal Structure -->
+ 
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <div class="row">
+                <div class="input-field col s4"> 
+                    <label for="titulo"><i class="fas fa-book-open"></i> Título</label>
+                    <br><br>
+                    <p id="titulo" type="text" class="validate" value="<?php echo $row_livro['titulo'];?>"></p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="isbn"><i class="fas fa-info-circle"></i> ISBN</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="ano_livro"><i class="fas fa-calendar"></i> Ano do Livro</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="autor"><i class="fas fa-tags"></i> Autor</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="editora"><i class="fas fa-address-book"></i> Editora</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="edicao"><i class="fas fa-address-book"></i> Edição</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+                <div class="input-field col s4">
+                    <label for="classificacao"><i class="fas fa-cogs"></i> Classificação</label>
+                    <br><br>
+                    <p>Teste</p>
+                </div>
+            </div> 
+    </div>
+    <div class="modal-footer">
+      <a  href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+          
+
+  <script>
+    $(document).ready(function(){
+    $('.modal').modal();
+  });
+
+  </script>
 
     <script src="../assests/js/app.js"></script>
 </body>

@@ -17,32 +17,14 @@ function myFunct(){
   })
 }
 
+//Calculo de Datas
 
 
-//Pesqisa Aluno
-async function pesquisarAluno(registro){
-  
+//Modal
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
 
-  //Receber os dados do formulario
-  var lerRa = document.querySelector("#ra" + registro).value;
-
-  //Recuperar o valor do atributo value
-
-  
-  //Verificação
-  if(lerRa >= 9){
-   const dados = await fetch('/pages/emp.dev.php?ra=' + lerRa);
-   const resposta = await dados.json();
-
-   if(resposta['erro']){
-
-   }else{
-    document.getElementById("nome" + registro).value = resposta['dados'].nome;
-    document.getElementById("curso" + registro).value = resposta['dados'].curso;
-    document.getElementById("semestre" + registro).value = resposta['dados'].semestre;
-   }
-
-  }
-}
 
 
