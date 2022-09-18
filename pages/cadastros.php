@@ -24,13 +24,12 @@ $sql = mysqli_query($con, $sql);
   $ano_livro = $_POST['ano_livro'];
   $autor = $_POST['autor'];
   $editora = $_POST['editora'];
-  $endereco = $_POST['endereco'];
   $edicao = $_POST['edicao'];
   $classificacao = $_POST['classificacao'];
   $qtde = $_POST ['qtde'];
 
-  $sql = "INSERT INTO tb_cadastro_aluno(cod_livro, titulo, num_ibsn, ano_livro, autor, editora, endereco, edicao, classificacao, qtde)
-        VALUES ('$cod_livro', '$titulo', '$num_ibsn', '$ano_livro', '$autor', '$editora', '$endereco', '$edicao', '$classificacao', '$qtde');";
+  $sql = "INSERT INTO tb_cadastro_livro(cod_livro, titulo, num_ibsn, ano_livro, autor, editora, edicao, classificacao, qtde)
+        VALUES ('$cod_livro', '$titulo', '$num_ibsn', '$ano_livro', '$autor', '$editora', '$edicao', '$classificacao', '$qtde');";
   $sql = mysqli_query($con, $sql);
 }
 ?>
@@ -144,7 +143,7 @@ $sql = mysqli_query($con, $sql);
 
                 <!--Formulário de Cadastro/Livros-->
                 <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" method="POST" action="">
                       <div class="row">
                         <div class="input-field col s4">
                           <input name="cod_livro" id="cod_livro" type="text" class="validate">
@@ -198,7 +197,7 @@ $sql = mysqli_query($con, $sql);
 
                 <!--Formulário de Cadastro/Usuários-->
                 <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" method="">
                       <div class="row">
                         <div class="input-field col s6">
                           <input id="nome" type="text" class="validate">
