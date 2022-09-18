@@ -1,4 +1,4 @@
-<!--<?php 
+<?php 
 
 include_once('db/conexao.php');
 
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 		echo "<script>alert('Ooops! E-mail ou senha incorretos. ')</script>";
 	}
 }
-?>-->
+?>
 
 <!DOCTYPE html>
 <html>
@@ -42,14 +42,17 @@ if (isset($_POST['submit'])) {
 <body>
 	<div class="container">
 		<form action="" method="POST" class="login-email">
-			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Recuperar senha</p>
+			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
 			<div class="input-group">
-				<input type="email" placeholder="Informe seu email" name="email" value="<?php echo $email; ?>" required>
+				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
 			</div>
 			<div class="input-group">
-				<button name="submit" class="btn">Recuperar</button>
+				<input type="password" placeholder="Senha" name="senha" value="<?php echo $_POST['senha']; ?>" required>
 			</div>
-			<p class="login-register-text">Tem uma conta? <a href="/pages/login.html" style="color:#38761d">Entre aqui</a>.</p>
+			<div class="input-group">
+				<button name="submit" class="btn">Login</button>
+			</div>
+			<p class="login-register-text">Esqueceu sua senha? <a href="/pages/recover.html" style="color:#38761d">Clique aqui</a>.</p>
 		</form>
 	</div>
 </body>

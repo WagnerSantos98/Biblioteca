@@ -34,7 +34,47 @@ else if(isset($_POST['cadastrar_livro'])){
         VALUES ('$cod_livro', '$titulo', '$num_ibsn', '$ano_livro', '$autor', '$editora', '$edicao', '$classificacao', '$qtde');";
   $sql = mysqli_query($con, $sql);
 }
+//Cadastro de Usuários
+session_start();
+
+error_reporting(0);
+
+/*if (isset($_SESSION['username'])) {
+    header("Location: /pages/login.php");
+}*/
+
+if (isset($_POST['submit'])) {
+	$username = $_POST['username'];
+	$tipo_acesso = $_POST['tipo_acesso'];
+  $email_user = $_POST['email_user'];
+	$senha = md5($_POST['senha']);
+
+	if ($senha == $senha) {
+		$sql = "SELECT * FROM tb_usuarios WHERE email_user='$email_user'";
+		$result = mysqli_query($conn, $sql);
+		if (!$result->num_rows > 0) {
+			$sql = "INSERT INTO tb_usuarios (username, tipo_acesso, email_user, senha)
+					VALUES ('$username', '$tipo_acesso', '$email_user', '$senha')";
+			$result = mysqli_query($con, $sql);
+			if ($result) {
+				echo "<script>alert('Wow! Registro do usuário concluído.')</script>";
+				$username = "";
+				$email_user = "";
+				$_POST['senha'] = "";
+			} else {
+				echo "<script>alert('Woops! Algo errado aconteceu.')</script>";
+			}
+		} else {
+			echo "<script>alert('Woops! E-mail já existe.')</script>";
+		}
+		
+	} else {
+		echo "<script>alert('Senha não coincidem.')</script>";
+	}
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -201,29 +241,29 @@ else if(isset($_POST['cadastrar_livro'])){
 
                 <!--Formulário de Cadastro/Usuários-->
                 <div class="row">
-                    <form class="col s12" method="">
+                    <form class="col s12" method="POST" action="">
                       <div class="row">
                         <div class="input-field col s6">
-                          <input id="nome" type="text" class="validate">
+                          <input name="username" id="nome" type="text" class="validate">
                           <label for="nome">Nome</label>
                         </div>
                         <div class="input-field col s4">
-                          <input id="ra" type="text" class="validate">
-                          <label for="ra">Tipo de acesso</label>
+                          <input name="tipo_acesso" id="tipo_acesso" type="text" class="validate">
+                          <label for="tipo_acesso">Tipo de acesso</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
+                            <input name="email_user" id="email_user" type="email" class="validate">
+                            <label for="email_user">Email</label>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s6">
-                            <input id="curso" type="text" class="validate">
-                            <label for="curso">Senha</label>
+                            <input name="senha" id="senha" type="text" class="validate">
+                            <label for="senha">Senha</label>
                         </div>
                       </div>
                       
-                      <a class="waves-effect waves-light btn"><i class="fa fa-send"></i> Cadastrar</a>
+                      <a name="cadastrar_usuario" class="waves-effect waves-light btn"><i class="fa fa-send"></i> Cadastrar</a>
                     </form>
                   </div>
 
