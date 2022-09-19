@@ -1,12 +1,4 @@
-<?php
 
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-}
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,7 +24,7 @@ if (!isset($_SESSION['username'])) {
     <header class="main-header">
         <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="btn-nav">
-        <?php echo "<p style='color: black'>Bem-vindo " . $_SESSION['username'] . "</p>"; ?>
+       
         
         <nav>
           <ul class="navigation">

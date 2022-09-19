@@ -88,7 +88,6 @@ if(isset($_POST['pesquisar_livro'])){
                 <form class="col s12" method="POST" action="">
                   <div class="row">
                     <div class="input-field col s4">
-                    <span id="msgAlerta1"></span>
                       <input name="ra" id="ra" type="text" class="validate">
                       <label for="ra">RA</label>
                     </div>
@@ -227,9 +226,11 @@ if(isset($_POST['pesquisar_livro'])){
       <h4>Modal Header</h4>
       <div class="row">
                 <div class="input-field col s4"> 
+                <input name="cod_livro" id="cod_livro" type="text" class="validate">
+                <input id="titulo" type="text" class="validate" value="<?php echo $row_livro['titulo'];?>" disabled>
                     <label for="titulo"><i class="fas fa-book-open"></i> Título</label>
                     <br><br>
-                    <p id="titulo" type="text" class="validate" value="<?php echo $row_livro['titulo'];?>"></p>
+                    
                 </div>
                 <div class="input-field col s4">
                     <label for="isbn"><i class="fas fa-info-circle"></i> ISBN</label>
@@ -264,16 +265,14 @@ if(isset($_POST['pesquisar_livro'])){
             </div> 
     </div>
     <div class="modal-footer">
-      <a  href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    
+      <!--<a  href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>-->
     </div>
   </div>
           
 
   <script>
-    $(document).ready(function(){
-    $('.modal').modal();
-  });
-
+ 
   </script>
 
     <script src="../assests/js/app.js"></script>
