@@ -12,7 +12,7 @@ if(isset($_POST['pesquisar_aluno'])){
    $row_aluno = mysqli_fetch_assoc($resultado_aluno);
 }
 
-if(isset($_POST['pesquisar_livro'])){
+else if(isset($_POST['pesquisar_livro'])){
     $cod_livro = $_POST['cod_livro'];
 
     //Query  recuperação de dados
@@ -88,6 +88,7 @@ if(isset($_POST['pesquisar_livro'])){
                 <form class="col s12" method="POST" action="">
                   <div class="row">
                     <div class="input-field col s4">
+                    <span id="msgAlerta1"></span>
                       <input name="ra" id="ra" type="text" class="validate">
                       <label for="ra">RA</label>
                     </div>
@@ -226,16 +227,13 @@ if(isset($_POST['pesquisar_livro'])){
       <h4>Modal Header</h4>
       <div class="row">
                 <div class="input-field col s4"> 
-                <input name="cod_livro" id="cod_livro" type="text" class="validate">
-                <input id="titulo" type="text" class="validate" value="<?php echo $row_livro['titulo'];?>" disabled>
-                    <label for="titulo"><i class="fas fa-book-open"></i> Título</label>
-                    <br><br>
-                    
+                <input name="cod_livro" id="cod_livro" type="text" class="validate"> 
+                <label for="cod_livro">Título ou Código do Livro</label>
                 </div>
                 <div class="input-field col s4">
                     <label for="isbn"><i class="fas fa-info-circle"></i> ISBN</label>
                     <br><br>
-                    <p>Teste</p>
+                    <input id="titulo" type="text" class="validate" value="<?php echo $row_livro['titulo'];?>" disabled>
                 </div>
                 <div class="input-field col s4">
                     <label for="ano_livro"><i class="fas fa-calendar"></i> Ano do Livro</label>
@@ -265,15 +263,12 @@ if(isset($_POST['pesquisar_livro'])){
             </div> 
     </div>
     <div class="modal-footer">
-    
-      <!--<a  href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>-->
+    <button name="pesquisar_livro" class="waves-effect waves-light btn modal-trigger" type="submit">Modal</button>
     </div>
   </div>
           
 
-  <script>
- 
-  </script>
+  
 
     <script src="../assests/js/app.js"></script>
 </body>
