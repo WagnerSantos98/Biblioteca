@@ -2,6 +2,10 @@
 
 session_start();
 
+if (!isset($_SESSION['username'])) {
+    header("Location: pages/login.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +19,7 @@ session_start();
     <link rel="stylesheet" href="assests/css/style.css">
 
     <!--Icons Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -28,7 +32,10 @@ session_start();
     <header class="main-header">
         <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="btn-nav">
-       
+        <?php echo "<p style='color: #fff; margin-left: 5%'>Bem-vindo " . $_SESSION['username'] . "</p>"; ?>
+
+        <!--Logout--->
+        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 50%; color: #fff" ><i class="fa-solid fa-right-from-bracket"></i></a>
         
         <nav>
           <ul class="navigation">
