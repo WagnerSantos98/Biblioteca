@@ -19,6 +19,7 @@ else if(isset($_POST['pesquisar_livro'])){
    $result_livro = "SELECT * FROM tb_cadastro_livro WHERE cod_livro ='$cod_livro' ";
    $resultado_livro = mysqli_query($con, $result_livro);
    $row_livro = mysqli_fetch_assoc($resultado_livro);
+
 }
 
 
@@ -266,6 +267,8 @@ else if(isset($_POST['pesquisar_livro'])){
     <button name="pesquisar_livro" class="waves-effect waves-light btn modal-trigger" type="submit">Modal</button>
     </div>
   </div>
+
+  <!--Verificar o motivo do erro da pesquisa não estar funcionando-->
           
 
   
