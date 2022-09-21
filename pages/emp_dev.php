@@ -214,7 +214,7 @@ else if(isset($_POST['pesquisar_livro'])){
                 </form>
               </div>
 
-        </div>
+        </div>    
       </div>
     </div>
 
