@@ -10,7 +10,7 @@ if(isset($_POST['pesquisar_aluno'])){
    $result_aluno = "SELECT * FROM tb_cadastro_aluno WHERE ra ='$ra' ";
    $resultado_aluno = mysqli_query($con, $result_aluno);
    $row_aluno = mysqli_fetch_assoc($resultado_aluno);
-}
+} 
 
 else if(isset($_POST['pesquisar_livro'])){
     $cod_livro = $_POST['cod_livro'];
