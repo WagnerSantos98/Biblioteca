@@ -32,10 +32,10 @@ if (!isset($_SESSION['username'])) {
     <header class="main-header">
         <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="btn-nav">
-        <?php echo "<p style='color: #fff; margin-left: 5%'>Bem-vindo " . $_SESSION['username'] . "</p>"; ?>
+        <?php echo "<p style='color: #fff; margin-left: 5%;'>Bem-vindo " . $_SESSION ['username'] . "</p>"; ?>
 
         <!--Logout--->
-        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 80%; color: #fff" ><i class="fa-solid fa-right-from-bracket"></i></a>
+        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 98%; color: #fff;" ><i class="fa-solid fa-right-from-bracket"></i></a>
         
         <nav>
           <ul class="navigation">
