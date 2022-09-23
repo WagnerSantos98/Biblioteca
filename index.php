@@ -35,7 +35,7 @@ if (!isset($_SESSION['username'])) {
         <?php echo "<p style='color: #fff; margin-left: 5%'>Bem-vindo " . $_SESSION['username'] . "</p>"; ?>
 
         <!--Logout--->
-        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 50%; color: #fff" ><i class="fa-solid fa-right-from-bracket"></i></a>
+        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 80%; color: #fff" ><i class="fa-solid fa-right-from-bracket"></i></a>
         
         <nav>
           <ul class="navigation">
