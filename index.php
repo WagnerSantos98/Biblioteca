@@ -28,7 +28,7 @@ if (!isset($_SESSION['username'])) {
     <title>Painel de Biblioteca</title> 
 </head>
 <body>
-    <!--Navbar--> 
+    <!--Navbar-->   
     <header class="main-header">
         <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="btn-nav">
