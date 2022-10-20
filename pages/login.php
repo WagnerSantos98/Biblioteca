@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 		echo "<script>alert('Ooops! E-mail ou senha incorretos. ')</script>";
 	}
 }
-?>
+?> 
 
 <!DOCTYPE html>
 <html>
